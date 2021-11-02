@@ -2,6 +2,24 @@
 
 namespace carg{
 
+std::vector<std::string> getNames(std::string name){
+	std::vector<std::string> names = std::vector<std::string>();
+	std::string tmp = "";
+
+	for(size_t i=0; i<name.size(); i++){
+		if(name.at(i) == '='){
+			names.push_back(tmp);
+			tmp = "";
+		}else{
+			tmp.push_back(name.at(i));
+		}
+	}
+	if(tmp.size() > 0)
+		names.push_back(tmp);
+
+	return names;
+}
+
 Parameter::Parameter(){
 	name = "";
 	limit = -1;

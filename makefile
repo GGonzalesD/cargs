@@ -4,7 +4,7 @@ sources = parameter.cpp args.cpp
 headers = xargs/*.hpp
 object = main
 std = gnu++17
-parameters = -k -test 1 2 -l 2 -s -file text.txt 100
+parameters = -k -test 1 2 -l 2 -name=foo -s -file text.txt 100
 
 all: compile run
 

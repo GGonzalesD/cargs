@@ -10,6 +10,8 @@ struct SParameter{
 	int limit;
 };
 
+std::vector<std::string> getNames(std::string);
+
 class Parameter{
 	std::string name;
 	std::vector<std::string> values;

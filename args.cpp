@@ -16,9 +16,20 @@ Args::Args(int args, const char** kargs, std::vector<SParameter> configparas){
 	for(int i=1; i<args; i++){
 		if(index == 0){ // main case
 			if(checkParameter(kargs[i])){
-				int id = insertParameter({kargs[i], 0});
-				if(!parameters[id].full())
-					index = id;
+				std::vector<std::string> names = getNames(kargs[i]);
+				if(names.size() > 1){
+					int id = insertParameter({names[0], 1});
+					for(size_t i=1; i<names.size(); i++)
+						parameters[id].addValue(names[i]);
+
+					if(!parameters[id].full())
+						index = id;
+				}else{
+					int id = insertParameter({kargs[i], 0});
+					if(!parameters[id].full())
+						index = id;
+				}
+
 			}else{
 				parameters[0].addValue(kargs[i]);
 			}
